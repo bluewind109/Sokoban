@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj67t3kngxdji"]
+[gd_scene load_steps=5 format=3 uid="uid://bj67t3kngxdji"]
 
 [ext_resource type="Texture2D" uid="uid://32lc3spshr2t" path="res://assets/spritesheet.png" id="1_q8p6o"]
+[ext_resource type="PackedScene" uid="uid://bsi4ol10xp8pq" path="res://player/player.tscn" id="2_o4sne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vuufm"]
 resource_name = "level_tiles"
@@ -34,3 +35,10 @@ layer_2/name = "Targets"
 layer_2/tile_data = PackedInt32Array(327696, 589824, 0, 327697, 589824, 0, 393233, 589824, 0, 393232, 589824, 0)
 layer_3/name = "Boxes"
 layer_3/tile_data = PackedInt32Array(262156, 65536, 0, 196621, 65536, 0, 196629, 65536, 0, 262165, 65536, 0, 196620, 65536, 0, 327697, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_o4sne")]
+position = Vector2(440, 184)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(533, 202)
+zoom = Vector2(1.5, 1.5)
