@@ -29,6 +29,14 @@ func _ready():
 	setup_level()
 
 
+func set_player_position(tile_coord: Vector2i):
+	var new_pos: Vector2 = Vector2(
+		tile_coord.x * GameData.TILE_SIZE,
+		tile_coord.y * GameData.TILE_SIZE
+	) + tile_map.global_position
+	player.global_position = new_pos
+
+
 func get_atlas_coord_for_layer_name(layer_name: String) -> Vector2i:
 	match layer_name:
 		LAYER_KEY_FLOOR:
@@ -59,12 +67,14 @@ func add_layer_tiles(layer_tiles, layer_name: String) -> void:
 
 func setup_level() -> void:
 	tile_map.clear()
-	var level_data = GameData.get_data_for_level("10")
+	var level_data = GameData.get_data_for_level("1")
 	var level_tiles = level_data.tiles
 	var player_start = level_data.player_start
 	
 	for layer_name in LAYER_MAP.keys():
 		add_layer_tiles(level_tiles[layer_name], layer_name)
+		
+	set_player_position(Vector2i(player_start.x, player_start.y))
 
 
 
