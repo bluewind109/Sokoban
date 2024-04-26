@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj67t3kngxdji"]
+[gd_scene load_steps=6 format=3 uid="uid://bj67t3kngxdji"]
 
 [ext_resource type="Texture2D" uid="uid://32lc3spshr2t" path="res://assets/spritesheet.png" id="1_q8p6o"]
+[ext_resource type="Script" path="res://level/level.gd" id="1_vgnav"]
 [ext_resource type="PackedScene" uid="uid://bsi4ol10xp8pq" path="res://player/player.tscn" id="2_o4sne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vuufm"]
@@ -23,6 +24,7 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_vuufm")
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_vgnav")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_yuul2")
