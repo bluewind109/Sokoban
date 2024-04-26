@@ -67,7 +67,7 @@ func add_layer_tiles(layer_tiles, layer_name: String) -> void:
 
 func setup_level() -> void:
 	tile_map.clear()
-	var level_data = GameData.get_data_for_level("1")
+	var level_data = GameData.get_data_for_level("9")
 	var level_tiles = level_data.tiles
 	var player_start = level_data.player_start
 	
@@ -75,7 +75,22 @@ func setup_level() -> void:
 		add_layer_tiles(level_tiles[layer_name], layer_name)
 		
 	set_player_position(Vector2i(player_start.x, player_start.y))
+	move_camera()
 
+
+func move_camera() -> void:
+	var tile_map_rect = tile_map.get_used_rect()
+	
+	var tile_map_start_x = tile_map_rect.position.x * GameData.TILE_SIZE
+	var tile_map_end_x = tile_map_rect.size.x * GameData.TILE_SIZE + tile_map_start_x
+	
+	var tile_map_start_y = tile_map_rect.position.y * GameData.TILE_SIZE
+	var tile_map_end_y = tile_map_rect.size.y * GameData.TILE_SIZE + tile_map_start_y
+	
+	var mid_x = tile_map_start_x + (tile_map_end_x - tile_map_start_x) / 2
+	var mid_y = tile_map_start_y + (tile_map_end_y - tile_map_start_y) / 2
+	
+	camera_2d.position = Vector2(mid_x, mid_y)
 
 
 
