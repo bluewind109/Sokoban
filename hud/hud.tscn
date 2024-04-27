@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0ip7y55w73b4"]
+
+[ext_resource type="Script" path="res://hud/hud.gd" id="1_2ygai"]
+[ext_resource type="LabelSettings" uid="uid://byot4lhdgoh1o" path="res://GM_white_32.tres" id="1_xq5je"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ygai")
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+
+[node name="HB" type="HBoxContainer" parent="MC/VB"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MC/VB/HB"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Level:"
+label_settings = ExtResource("1_xq5je")
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="MC/VB/HB"]
+layout_mode = 2
+text = "1"
+label_settings = ExtResource("1_xq5je")
+vertical_alignment = 1
+
+[node name="HB2" type="HBoxContainer" parent="MC/VB"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MC/VB/HB2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Moves:"
+label_settings = ExtResource("1_xq5je")
+vertical_alignment = 1
+
+[node name="MovesLabel" type="Label" parent="MC/VB/HB2"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("1_xq5je")
+vertical_alignment = 1
+
+[node name="HB3" type="HBoxContainer" parent="MC/VB"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MC/VB/HB3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Best:"
+label_settings = ExtResource("1_xq5je")
+vertical_alignment = 1
+
+[node name="BestLabel" type="Label" parent="MC/VB/HB3"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("1_xq5je")
+vertical_alignment = 1

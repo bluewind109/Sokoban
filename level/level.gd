@@ -3,6 +3,7 @@ extends Node2D
 @onready var tile_map = $TileMap
 @onready var player = $Player
 @onready var camera_2d = $Camera2D
+@onready var hud = $CanvasLayer/HUD
 
 const FLOOR_LAYER = 0
 const WALL_LAYER = 1
@@ -35,6 +36,8 @@ func _ready():
 func _process(delta):
 	if (Input.is_action_just_pressed("exit")):
 		GameManager.load_main_scene()
+	
+	hud.set_moves_label(_total_moves)
 	
 	if (_moving == true): return
 	
@@ -168,7 +171,7 @@ func add_layer_tiles(layer_tiles, layer_name: String) -> void:
 func setup_level() -> void:
 	tile_map.clear()
 	
-	var level_number = GameManager.get_level_selected()
+	var level_number: String = GameManager.get_level_selected()
 	var level_data = GameData.get_data_for_level(level_number)
 	var level_tiles = level_data.tiles
 	var player_start = level_data.player_start
@@ -178,7 +181,7 @@ func setup_level() -> void:
 		
 	set_player_position(Vector2i(player_start.x, player_start.y))
 	move_camera()
-
+	hud.set_level_label(level_number)
 
 func move_camera() -> void:
 	var tile_map_rect = tile_map.get_used_rect()
