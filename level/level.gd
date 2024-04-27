@@ -37,7 +37,6 @@ func _process(delta):
 	
 	var move_direction = Vector2i.ZERO
 	
-	
 	if (Input.is_action_just_pressed("right") == true):
 		player.flip_h = false
 		move_direction = Vector2i.RIGHT
@@ -60,7 +59,13 @@ func set_player_position(tile_coord: Vector2i) -> void:
 	) + tile_map.global_position
 	player.global_position = new_pos
 
-# GAME LOGIC
+#region GAME LOGIC
+func check_game_state() -> void:
+	for tile in tile_map.get_used_cells(TARGET_LAYER):
+		if (!cell_is_box(tile)):
+			return
+
+
 func move_box(box_tile: Vector2i, direction: Vector2i) -> void:
 	var dest = box_tile + direction
 	
@@ -122,8 +127,10 @@ func player_move(direction: Vector2i) -> void:
 		if (box_seen):
 			move_box(new_tile, direction)
 		set_player_position(new_tile)
+		check_game_state()
 		
 	_moving = false
+#endregion
 
 
 #region LEVEL SETUP
@@ -157,7 +164,7 @@ func add_layer_tiles(layer_tiles, layer_name: String) -> void:
 
 func setup_level() -> void:
 	tile_map.clear()
-	var level_data = GameData.get_data_for_level("12")
+	var level_data = GameData.get_data_for_level("1")
 	var level_tiles = level_data.tiles
 	var player_start = level_data.player_start
 	
