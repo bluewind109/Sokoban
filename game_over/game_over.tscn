@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://s5uexapxcogm"]
+
+[ext_resource type="Texture2D" uid="uid://c3hmgalf401uv" path="res://assets/Purple.png" id="1_ht71k"]
+[ext_resource type="Texture2D" uid="uid://us8fqoljnhq5" path="res://assets/panel_beigeLight.png" id="2_jexq6"]
+[ext_resource type="LabelSettings" uid="uid://bkcxq82jpg7lj" path="res://LG_title_96.tres" id="3_0xari"]
+[ext_resource type="FontFile" uid="uid://dcmk8y6dj0s26" path="res://assets/LuckiestGuy-Regular.ttf" id="4_ok15k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hyinh"]
+font = ExtResource("4_ok15k")
+font_size = 48
+font_color = Color(0.415686, 1, 1, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.65098)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ifl5d"]
+font = ExtResource("4_ok15k")
+font_size = 48
+font_color = Color(0.329412, 1, 0.12549, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_el52i"]
+font = ExtResource("4_ok15k")
+font_size = 48
+font_color = Color(0.886275, 0.490196, 0.321569, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ht71k")
+stretch_mode = 1
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="NP" type="NinePatchRect" parent="MC"]
+layout_mode = 2
+texture = ExtResource("2_jexq6")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MC" type="MarginContainer" parent="MC/NP"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VB" type="VBoxContainer" parent="MC/NP/MC"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="TitleLabel" type="Label" parent="MC/NP/MC/VB"]
+layout_mode = 2
+text = "LEVEL COMPLETE"
+label_settings = ExtResource("3_0xari")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MovesLabel" type="Label" parent="MC/NP/MC/VB"]
+layout_mode = 2
+text = "XXX MOVES TAKEN"
+label_settings = SubResource("LabelSettings_hyinh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RecordLabel" type="Label" parent="MC/NP/MC/VB"]
+layout_mode = 2
+text = "A NEW RECORD!"
+label_settings = SubResource("LabelSettings_ifl5d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MC/NP/MC/VB"]
+layout_mode = 2
+text = "PRESS Q TO EXIT"
+label_settings = SubResource("LabelSettings_el52i")
+horizontal_alignment = 1
+vertical_alignment = 1
