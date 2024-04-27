@@ -32,13 +32,14 @@ var _total_moves: int = 0
 
 func _ready():
 	setup_level()
-	hud.show()
-	game_over.hide()
 
 
 func _process(delta):
 	if (Input.is_action_just_pressed("exit")):
 		GameManager.load_main_scene()
+	
+	if (Input.is_action_just_pressed("reload")):
+		setup_level()
 	
 	hud.set_moves_label(_total_moves)
 	
@@ -75,7 +76,7 @@ func check_game_state() -> void:
 			return
 
 	hud.hide()
-	game_over.show()
+	game_over.game_over(GameManager.get_level_selected(), _total_moves)
 	ScoreSync.level_completed(GameManager.get_level_selected(), _total_moves)
 
 
@@ -177,6 +178,7 @@ func add_layer_tiles(layer_tiles, layer_name: String) -> void:
 
 func setup_level() -> void:
 	tile_map.clear()
+	_total_moves = 0
 	
 	var level_number: String = GameManager.get_level_selected()
 	var level_data = GameData.get_data_for_level(level_number)
@@ -189,6 +191,9 @@ func setup_level() -> void:
 	set_player_position(Vector2i(player_start.x, player_start.y))
 	move_camera()
 	hud.set_level_label(level_number)
+	hud.new_game(level_number)
+	game_over.new_game()
+
 
 func move_camera() -> void:
 	var tile_map_rect = tile_map.get_used_rect()

@@ -24,4 +24,8 @@ func set_level_label(level: String) -> void:
 	level_label.text = level
 
 
-
+func new_game(level: String) -> void:
+	set_best_label(ScoreSync.get_level_best_score(level))
+	set_moves_label(0)
+	set_level_label(level)
+	show()

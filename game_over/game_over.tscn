@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://s5uexapxcogm"]
+[gd_scene load_steps=9 format=3 uid="uid://s5uexapxcogm"]
 
 [ext_resource type="Texture2D" uid="uid://c3hmgalf401uv" path="res://assets/Purple.png" id="1_ht71k"]
+[ext_resource type="Script" path="res://game_over/game_over.gd" id="1_k27ep"]
 [ext_resource type="Texture2D" uid="uid://us8fqoljnhq5" path="res://assets/panel_beigeLight.png" id="2_jexq6"]
 [ext_resource type="LabelSettings" uid="uid://bkcxq82jpg7lj" path="res://LG_title_96.tres" id="3_0xari"]
 [ext_resource type="FontFile" uid="uid://dcmk8y6dj0s26" path="res://assets/LuckiestGuy-Regular.ttf" id="4_ok15k"]
@@ -34,6 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_k27ep")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -98,6 +100,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RecordLabel" type="Label" parent="MC/NP/MC/VB"]
+visible = false
 layout_mode = 2
 text = "A NEW RECORD!"
 label_settings = SubResource("LabelSettings_ifl5d")
