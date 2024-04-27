@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctthm2d6p3tfb"]
+
+[ext_resource type="Texture2D" uid="uid://dibudw1ki7udi" path="res://assets/blue_panel.png" id="1_xypyl"]
+[ext_resource type="LabelSettings" uid="uid://byot4lhdgoh1o" path="res://GM_white_32.tres" id="2_57b8i"]
+[ext_resource type="Script" path="res://level_button/level_button.gd" id="2_q8lrn"]
+[ext_resource type="Texture2D" uid="uid://b2btj4idovvj" path="res://assets/green_checkmark.png" id="3_pd4dg"]
+
+[node name="LevelButton" type="NinePatchRect"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+texture = ExtResource("1_xypyl")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+script = ExtResource("2_q8lrn")
+
+[node name="LevelLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "99"
+label_settings = ExtResource("2_57b8i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckMark" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 26.0
+offset_bottom = 25.0
+texture = ExtResource("3_pd4dg")
+stretch_mode = 4
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
