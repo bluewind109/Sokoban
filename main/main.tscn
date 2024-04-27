@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://yvofebggqkub"]
+[gd_scene load_steps=4 format=3 uid="uid://yvofebggqkub"]
 
+[ext_resource type="Script" path="res://main/main.gd" id="1_g5u6h"]
 [ext_resource type="Texture2D" uid="uid://qrle1g52us1q" path="res://assets/Gray.png" id="1_k75sl"]
 [ext_resource type="LabelSettings" uid="uid://bkcxq82jpg7lj" path="res://LG_title_96.tres" id="2_30y2j"]
 
 [node name="Main" type="CanvasLayer"]
+script = ExtResource("1_g5u6h")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
