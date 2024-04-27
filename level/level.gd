@@ -76,6 +76,8 @@ func check_game_state() -> void:
 
 	hud.hide()
 	game_over.show()
+	ScoreSync.level_completed(GameManager.get_level_selected(), _total_moves)
+
 
 func move_box(box_tile: Vector2i, direction: Vector2i) -> void:
 	var dest = box_tile + direction
